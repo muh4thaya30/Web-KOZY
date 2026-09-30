@@ -1,0 +1,3573 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KOZY — Desain Kamar Kos Mahasiswa</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+    --bg: #f8f5ef;
+    --surface: #fffdf9;
+
+    --green: #40523c;
+    --green-dark: #283625;
+    --green-soft: #dde4d7;
+
+    --orange: #c7653f;
+    --orange-dark: #a94c2b;
+    --orange-soft: #f1d8c9;
+
+    --cream: #eee5d7;
+
+    --text: #22231f;
+    --muted: #77776f;
+
+    --border: rgba(40, 54, 37, 0.12);
+
+    --shadow:
+        0 24px 70px rgba(49, 42, 31, 0.12);
+
+    --radius-lg: 36px;
+    --radius-md: 24px;
+    --radius-sm: 16px;
+}   x
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: min(1180px, 90%);
+    margin-inline: auto;
+}
+
+section {
+    position: relative;
+}
+
+.section {
+    padding: 110px 0;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    background: var(--green-soft);
+
+    color: var(--green-dark);
+
+    font-size: 0.76rem;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.section-tag.orange {
+    background: var(--orange-soft);
+    color: var(--orange-dark);
+}
+
+.section-heading {
+    max-width: 720px;
+}
+
+.section-heading.center {
+    text-align: center;
+    margin-inline: auto;
+}
+
+.section-heading h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(2.6rem, 5vw, 4.8rem);
+
+    line-height: 1.04;
+
+    letter-spacing: -0.055em;
+
+    margin-top: 20px;
+}
+
+.section-heading p {
+    max-width: 630px;
+
+    margin-top: 20px;
+
+    color: var(--muted);
+
+    font-size: 1.03rem;
+
+    line-height: 1.8;
+}
+
+.section-heading.center p {
+    margin-inline: auto;
+}
+
+.accent {
+    color: var(--orange);
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    padding: 20px 0;
+
+    transition: 0.3s;
+}
+
+.navbar.scrolled {
+    padding: 12px 0;
+
+    background: rgba(248, 245, 239, 0.9);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 1.8rem;
+
+    font-weight: 800;
+
+    letter-spacing: -0.08em;
+
+    color: var(--green-dark);
+}
+
+.logo-o {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 32px;
+
+    color: white;
+
+    background: var(--orange);
+
+    border-radius: 50% 50% 46% 46%;
+}
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+
+    gap: 34px;
+}
+
+.desktop-nav a {
+    position: relative;
+
+    font-size: 0.88rem;
+    font-weight: 700;
+
+    color: #55564f;
+
+    transition: 0.25s;
+}
+
+.desktop-nav a:hover {
+    color: var(--orange);
+}
+
+.desktop-nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--orange);
+
+    transition: 0.25s;
+}
+
+.desktop-nav a:hover::after {
+    width: 100%;
+}
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px 20px;
+
+    border-radius: 999px;
+
+    color: white;
+
+    background: var(--green-dark);
+
+    font-size: 0.85rem;
+    font-weight: 700;
+
+    transition: 0.25s;
+}
+
+.nav-button:hover {
+    transform: translateY(-2px);
+    background: var(--orange);
+}
+
+.menu-button {
+    display: none;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+
+    color: var(--green-dark);
+
+    font-size: 1.35rem;
+}
+
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
+
+.mobile-menu {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1500;
+
+    background: rgba(40, 54, 37, 0.96);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s;
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-inner {
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 25px;
+}
+
+.mobile-menu a {
+    color: white;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.close-menu {
+    position: absolute;
+
+    top: 25px;
+    right: 25px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 1.5rem;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding: 140px 0 70px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(199, 101, 63, 0.16),
+            transparent 70%
+        );
+
+    right: -250px;
+    top: -160px;
+}
+
+.hero-grid {
+    display: grid;
+
+    grid-template-columns:
+        0.9fr 1.1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 28px;
+
+    padding: 8px 13px;
+
+    border-radius: 999px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    color: var(--green);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.hero-title {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(4rem, 7.5vw, 7.3rem);
+
+    line-height: 0.88;
+
+    letter-spacing: -0.075em;
+
+    color: var(--green-dark);
+}
+
+.hero-title span {
+    display: block;
+    color: var(--orange);
+}
+
+.hero-subtitle {
+    margin-top: 30px;
+
+    max-width: 530px;
+
+    font-size: 1.12rem;
+    line-height: 1.8;
+
+    color: var(--muted);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 52px;
+
+    padding: 0 24px;
+
+    border-radius: 999px;
+
+    font-size: 0.9rem;
+    font-weight: 800;
+
+    transition: 0.25s;
+}
+
+.primary-btn {
+    border: none;
+
+    background: var(--orange);
+
+    color: white;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    background: var(--orange-dark);
+}
+
+.secondary-btn {
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+
+    color: var(--green-dark);
+}
+
+.secondary-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--green);
+}
+
+.hero-note {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 40px;
+
+    color: var(--muted);
+
+    font-size: 0.83rem;
+}
+
+.hero-note-icon {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--green-soft);
+
+    color: var(--green-dark);
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.hero-visual {
+    position: relative;
+
+    min-height: 680px;
+}
+
+.hero-main-photo {
+    position: absolute;
+
+    width: 76%;
+    height: 610px;
+
+    right: 0;
+    top: 20px;
+
+    overflow: hidden;
+
+    border-radius:
+        180px 30px 80px 30px;
+
+    box-shadow: var(--shadow);
+}
+
+.hero-main-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.hero-small-photo {
+    position: absolute;
+
+    width: 42%;
+    height: 320px;
+
+    left: 0;
+    bottom: 0;
+
+    overflow: hidden;
+
+    border-radius:
+        24px 80px 24px 24px;
+
+    border: 10px solid var(--bg);
+
+    box-shadow:
+        0 18px 55px rgba(52, 45, 36, 0.15);
+}
+
+.hero-small-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.hero-floating-card {
+    position: absolute;
+
+    left: 8%;
+    top: 80px;
+
+    z-index: 5;
+
+    width: 190px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.92);
+
+    backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 20px 50px rgba(40, 35, 30, 0.14);
+}
+
+.hero-floating-card strong {
+    display: block;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 1.4rem;
+
+    color: var(--green-dark);
+}
+
+.hero-floating-card span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.hero-sticker {
+    position: absolute;
+
+    right: -15px;
+    bottom: 50px;
+
+    z-index: 5;
+
+    width: 145px;
+    height: 145px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 20px;
+
+    border-radius: 50%;
+
+    background: var(--orange);
+
+    color: white;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 0.85rem;
+    font-weight: 800;
+
+    text-align: center;
+
+    line-height: 1.35;
+
+    transform: rotate(9deg);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+    padding: 50px 0 120px;
+}
+
+.intro-box {
+    display: grid;
+
+    grid-template-columns:
+        0.7fr 1.3fr;
+
+    gap: 60px;
+
+    align-items: center;
+
+    padding: 55px 60px;
+
+    border-radius: var(--radius-lg);
+
+    background: var(--green-dark);
+
+    color: white;
+}
+
+.intro-label {
+    font-family: "Manrope", sans-serif;
+
+    font-size: 1.1rem;
+    font-weight: 800;
+
+    color: #d5e0d0;
+}
+
+.intro-text {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(2rem, 3.6vw, 3.6rem);
+
+    font-weight: 700;
+
+    letter-spacing: -0.045em;
+
+    line-height: 1.12;
+}
+
+.intro-text span {
+    color: #efa27e;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.benefits-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 24px;
+
+    margin-top: 65px;
+}
+
+.benefit-card {
+    position: relative;
+
+    min-height: 340px;
+
+    padding: 32px;
+
+    border-radius: var(--radius-md);
+
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: var(--shadow);
+}
+
+.benefit-number {
+    position: absolute;
+
+    right: 24px;
+    top: 17px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 4.6rem;
+    font-weight: 800;
+
+    color: rgba(64, 82, 60, 0.06);
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 18px;
+
+    background: var(--green-soft);
+
+    color: var(--green-dark);
+
+    font-size: 1.5rem;
+}
+
+.benefit-card:nth-child(2)
+.benefit-icon {
+    background: var(--orange-soft);
+    color: var(--orange-dark);
+}
+
+.benefit-card h3 {
+    margin-top: 55px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 1.55rem;
+    letter-spacing: -0.035em;
+}
+
+.benefit-card p {
+    margin-top: 14px;
+
+    color: var(--muted);
+
+    font-size: 0.92rem;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   BEFORE AFTER
+========================================================= */
+
+.transformation {
+    padding: 110px 0;
+
+    background: var(--cream);
+}
+
+.transformation-grid {
+    display: grid;
+
+    grid-template-columns:
+        0.72fr 1.28fr;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+.transformation-copy p {
+    margin-top: 22px;
+
+    color: var(--muted);
+
+    line-height: 1.8;
+}
+
+.transformation-checks {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.check-icon {
+    width: 26px;
+    height: 26px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    color: white;
+
+    font-size: 0.75rem;
+}
+
+
+/* SLIDER */
+
+.compare {
+    position: relative;
+
+    height: 600px;
+
+    overflow: hidden;
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow);
+}
+
+.compare > img,
+.compare-after img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.compare-after {
+    position: absolute;
+
+    inset: 0;
+
+    width: 50%;
+
+    overflow: hidden;
+}
+
+.compare-after img {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: min(760px, 80vw);
+    max-width: none;
+}
+
+.compare-divider {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 3px;
+
+    background: white;
+
+    transform: translateX(-50%);
+}
+
+.compare-handle {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background: white;
+
+    color: var(--orange);
+
+    font-size: 1.3rem;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.2);
+}
+
+.compare input {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    cursor: ew-resize;
+}
+
+.compare-label {
+    position: absolute;
+
+    top: 25px;
+
+    z-index: 3;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.9);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.compare-label.before {
+    right: 25px;
+}
+
+.compare-label.after {
+    left: 25px;
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process {
+    overflow: hidden;
+}
+
+.process-list {
+    margin-top: 75px;
+}
+
+.process-row {
+    display: grid;
+
+    grid-template-columns:
+        90px 1fr 1fr;
+
+    gap: 40px;
+
+    align-items: center;
+
+    padding: 42px 0;
+
+    border-top: 1px solid var(--border);
+}
+
+.process-row:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.process-number {
+    font-family: "Manrope", sans-serif;
+
+    font-size: 3rem;
+    font-weight: 800;
+
+    color: var(--orange);
+}
+
+.process-row h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+
+    letter-spacing: -0.04em;
+}
+
+.process-row p {
+    color: var(--muted);
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   PACKAGES
+========================================================= */
+
+.packages {
+    background: var(--green-dark);
+}
+
+.packages .section-heading h2 {
+    color: white;
+}
+
+.packages .section-heading p {
+    color: #bdc7b9;
+}
+
+.package-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+
+    margin-top: 70px;
+}
+
+.package-card {
+    position: relative;
+
+    padding: 38px;
+
+    border-radius: 28px;
+
+    background: #f8f5ef;
+
+    color: var(--text);
+
+    transition: 0.3s;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+}
+
+.package-card.featured {
+    background: var(--orange);
+
+    color: white;
+}
+
+.package-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    opacity: 0.68;
+}
+
+.package-card h3 {
+    margin-top: 12px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 2rem;
+
+    letter-spacing: -0.04em;
+}
+
+.package-price {
+    margin-top: 24px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 2.5rem;
+    font-weight: 800;
+
+    letter-spacing: -0.04em;
+
+    color: var(--green-dark);
+}
+
+.featured .package-price {
+    color: white;
+}
+
+.package-price small {
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.package-divider {
+    height: 1px;
+
+    margin: 28px 0;
+
+    background: rgba(40,54,37,0.13);
+}
+
+.featured .package-divider {
+    background: rgba(255,255,255,0.25);
+}
+
+.package-card ul {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.package-card li {
+    display: flex;
+
+    gap: 10px;
+
+    font-size: 0.9rem;
+
+    line-height: 1.55;
+}
+
+.package-card li::before {
+    content: "✓";
+
+    font-weight: 800;
+
+    color: var(--green);
+}
+
+.featured li::before {
+    color: white;
+}
+
+.package-card button {
+    width: 100%;
+
+    margin-top: 32px;
+
+    padding: 14px;
+
+    border-radius: 999px;
+
+    border: 1px solid var(--green-dark);
+
+    background: transparent;
+
+    color: var(--green-dark);
+
+    font-weight: 800;
+
+    transition: 0.25s;
+}
+
+.package-card button:hover {
+    background: var(--green-dark);
+    color: white;
+}
+
+.featured button {
+    border-color: white;
+
+    color: white;
+}
+
+.featured button:hover {
+    background: white;
+
+    color: var(--orange-dark);
+}
+
+.popular-badge {
+    position: absolute;
+
+    right: 25px;
+    top: 25px;
+
+    padding: 8px 13px;
+
+    border-radius: 999px;
+
+    background: white;
+
+    color: var(--orange-dark);
+
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.3fr 0.7fr 0.9fr;
+
+    grid-template-rows:
+        280px 280px;
+
+    gap: 18px;
+
+    margin-top: 70px;
+}
+
+.gallery-item {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+}
+
+.gallery-item:nth-child(1) {
+    grid-row:
+        1 / span 2;
+}
+
+.gallery-item:nth-child(4) {
+    grid-column:
+        2 / span 2;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-overlay {
+    position: absolute;
+
+    inset: auto 0 0;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(20, 25, 18, 0.7)
+        );
+
+    color: white;
+}
+
+.gallery-overlay strong {
+    display: block;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 1.1rem;
+}
+
+.gallery-overlay span {
+    font-size: 0.76rem;
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq {
+    background: var(--cream);
+}
+
+.faq-layout {
+    display: grid;
+
+    grid-template-columns:
+        0.8fr 1.2fr;
+
+    gap: 80px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.faq-item {
+    border-top: 1px solid rgba(40,54,37,0.15);
+}
+
+.faq-item:last-child {
+    border-bottom: 1px solid rgba(40,54,37,0.15);
+}
+
+.faq-question {
+    width: 100%;
+
+    padding: 24px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    border: none;
+
+    background: none;
+
+    color: var(--text);
+
+    text-align: left;
+
+    font-weight: 800;
+
+    font-size: 1rem;
+}
+
+.faq-icon {
+    font-size: 1.4rem;
+
+    color: var(--orange);
+
+    transition: 0.3s;
+}
+
+.faq-answer {
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition: max-height 0.35s ease;
+}
+
+.faq-answer p {
+    padding:
+        0 40px 24px 0;
+
+    color: var(--muted);
+
+    font-size: 0.92rem;
+
+    line-height: 1.75;
+}
+
+.faq-item.active
+.faq-icon {
+    transform: rotate(45deg);
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta {
+    padding: 110px 0;
+}
+
+.cta-box {
+    position: relative;
+
+    padding: 80px;
+
+    overflow: hidden;
+
+    border-radius: 40px;
+
+    background: var(--orange);
+
+    color: white;
+}
+
+.cta-box::after {
+    content: "";
+
+    position: absolute;
+
+    width: 370px;
+    height: 370px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.09);
+
+    right: -80px;
+    top: -130px;
+}
+
+.cta-box h2 {
+    position: relative;
+    z-index: 2;
+
+    max-width: 720px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(3rem, 5vw, 5.6rem);
+
+    line-height: 0.98;
+
+    letter-spacing: -0.06em;
+}
+
+.cta-box p {
+    position: relative;
+    z-index: 2;
+
+    max-width: 550px;
+
+    margin-top: 24px;
+
+    color: rgba(255,255,255,0.82);
+
+    line-height: 1.8;
+}
+
+.cta-actions {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+.cta-primary {
+    padding: 15px 24px;
+
+    border-radius: 999px;
+
+    border: none;
+
+    background: white;
+
+    color: var(--orange-dark);
+
+    font-weight: 800;
+}
+
+.cta-secondary {
+    padding: 15px 24px;
+
+    border-radius: 999px;
+
+    border: 1px solid rgba(255,255,255,0.45);
+
+    background: transparent;
+
+    color: white;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        rgba(25, 30, 23, 0.72);
+
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    position: relative;
+
+    width: min(580px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 40px;
+
+    border-radius: 28px;
+
+    background: var(--surface);
+}
+
+.modal-close {
+    position: absolute;
+
+    right: 20px;
+    top: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    font-size: 1.2rem;
+}
+
+.modal-card h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: 2.2rem;
+
+    letter-spacing: -0.04em;
+}
+
+.modal-card > p {
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+
+    margin-top: 30px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--green-dark);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border-radius: 13px;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--orange);
+}
+
+.form-submit {
+    margin-top: 8px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background: var(--green-dark);
+
+    color: white;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 65px 0 35px;
+
+    background: #202a1e;
+
+    color: white;
+}
+
+.footer-top {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr 0.8fr 0.8fr;
+
+    gap: 60px;
+}
+
+.footer-logo {
+    color: white;
+}
+
+.footer-description {
+    max-width: 390px;
+
+    margin-top: 20px;
+
+    color: #aeb9aa;
+
+    font-size: 0.88rem;
+    line-height: 1.8;
+}
+
+.footer-title {
+    margin-bottom: 18px;
+
+    font-size: 0.78rem;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    color: #8f9b8c;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    color: #d7ddd5;
+
+    font-size: 0.88rem;
+}
+
+.footer-links a:hover {
+    color: #f0a07b;
+}
+
+.footer-bottom {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 60px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.09);
+
+    color: #8f9b8c;
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1020px) {
+
+    .desktop-nav,
+    .nav-button {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-copy {
+        max-width: 760px;
+    }
+
+    .hero-visual {
+        min-height: 620px;
+    }
+
+    .hero-main-photo {
+        width: 76%;
+    }
+
+    .intro-box {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .transformation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .transformation-copy {
+        max-width: 650px;
+    }
+
+    .package-grid {
+        grid-template-columns: 1fr;
+        max-width: 650px;
+        margin-inline: auto;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 330px 260px 260px;
+    }
+
+    .gallery-item:nth-child(1) {
+        grid-row: auto;
+        grid-column: 1 / span 2;
+    }
+
+    .gallery-item:nth-child(4) {
+        grid-column: 1 / span 2;
+    }
+
+    .faq-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    .hero-title {
+        font-size: 4.2rem;
+    }
+
+    .hero-visual {
+        min-height: 500px;
+    }
+
+    .hero-main-photo {
+        width: 88%;
+        height: 450px;
+
+        border-radius:
+            90px 24px 65px 24px;
+    }
+
+    .hero-small-photo {
+        width: 45%;
+        height: 230px;
+    }
+
+    .hero-floating-card {
+        width: 160px;
+        left: 0;
+        top: 40px;
+    }
+
+    .hero-sticker {
+        width: 110px;
+        height: 110px;
+
+        right: -5px;
+
+        font-size: 0.72rem;
+    }
+
+    .intro {
+        padding-bottom: 80px;
+    }
+
+    .intro-box {
+        padding: 38px 28px;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .compare {
+        height: 480px;
+    }
+
+    .process-row {
+        grid-template-columns:
+            55px 1fr;
+
+        gap: 20px;
+    }
+
+    .process-row p {
+        grid-column:
+            2 / 3;
+    }
+
+    .gallery-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gallery-item {
+        height: 320px;
+    }
+
+    .cta-box {
+        padding: 55px 28px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .modal-card {
+        padding: 35px 22px 25px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ======================================================
+     NAVBAR
+====================================================== -->
+
+<header class="navbar" id="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+            K<span class="logo-o">O</span>ZY
+        </a>
+
+        <nav class="desktop-nav">
+            <a href="#about">Tentang</a>
+            <a href="#transform">Makeover</a>
+            <a href="#process">Cara Kerja</a>
+            <a href="#packages">Paket</a>
+            <a href="#gallery">Inspirasi</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+
+        <button class="nav-button open-consultation">
+            Konsultasi
+            <span>↗</span>
+        </button>
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ======================================================
+     MOBILE MENU
+====================================================== -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <button
+        class="close-menu"
+        id="closeMenu"
+    >
+        ×
+    </button>
+
+    <div class="mobile-menu-inner">
+
+        <a href="#about">Tentang</a>
+        <a href="#transform">Makeover</a>
+        <a href="#process">Cara Kerja</a>
+        <a href="#packages">Paket</a>
+        <a href="#gallery">Inspirasi</a>
+        <a href="#faq">FAQ</a>
+
+    </div>
+
+</div>
+
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+        <div class="hero-copy">
+
+            <div class="hero-eyebrow">
+                ✦ Affordable room design for students
+            </div>
+
+            <h1 class="hero-title">
+                Small room.
+                <span>Better living.</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                KOZY membantu kamu menata kamar kos menjadi
+                lebih nyaman, fungsional, dan personal tanpa
+                renovasi permanen atau budget yang bikin pusing.
+            </p>
+
+            <div class="hero-actions">
+
+                <button
+                    class="primary-btn open-consultation"
+                >
+                    Mulai makeover
+                    <span>→</span>
+                </button>
+
+                <a
+                    href="#packages"
+                    class="secondary-btn"
+                >
+                    Lihat paket
+                </a>
+
+            </div>
+
+            <div class="hero-note">
+
+                <div class="hero-note-icon">
+                    ✓
+                </div>
+
+                <span>
+                    Konsultasi online • Cocok untuk kamar kos •
+                    Rekomendasi menyesuaikan budget
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="hero-main-photo">
+
+                <img
+                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=85&w=1400&auto=format&fit=crop"
+                    alt="Kamar kos nyaman"
+                >
+
+            </div>
+
+
+            <div class="hero-small-photo">
+
+                <img
+                    src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=85&w=900&auto=format&fit=crop"
+                    alt="Interior kamar"
+                >
+
+            </div>
+
+
+            <div class="hero-floating-card">
+
+                <strong>
+                    1–3 hari
+                </strong>
+
+                <span>
+                    estimasi pengerjaan desain tergantung paket
+                </span>
+
+            </div>
+
+
+            <div class="hero-sticker">
+                Your room,
+                your comfort,
+                your KOZY.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     INTRO
+====================================================== -->
+
+<section class="intro" id="about">
+
+    <div class="container">
+
+        <div class="intro-box reveal">
+
+            <div class="intro-label">
+                Tentang KOZY
+            </div>
+
+            <div class="intro-text">
+                Bukan renovasi besar.
+                Kami membantu membuat
+                <span>perubahan kecil yang terasa besar.</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     BENEFITS
+====================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+                Kenapa KOZY
+            </span>
+
+            <h2>
+                Desain yang masuk akal
+                untuk kehidupan <span class="accent">anak kos.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="benefits-grid">
+
+            <article class="benefit-card reveal">
+
+                <span class="benefit-number">
+                    01
+                </span>
+
+                <div class="benefit-icon">
+                    ⌂
+                </div>
+
+                <h3>
+                    No permanent renovation
+                </h3>
+
+                <p>
+                    Fokus pada layout, furnitur, dekorasi,
+                    pencahayaan, penyimpanan, dan elemen lain
+                    yang tetap realistis untuk kamar sewaan.
+                </p>
+
+            </article>
+
+
+            <article class="benefit-card reveal">
+
+                <span class="benefit-number">
+                    02
+                </span>
+
+                <div class="benefit-icon">
+                    Rp
+                </div>
+
+                <h3>
+                    Budget-conscious
+                </h3>
+
+                <p>
+                    Ide desain tidak berhenti di visual.
+                    Rekomendasi dibuat agar tetap bisa
+                    diterapkan sesuai kemampuan budget mahasiswa.
+                </p>
+
+            </article>
+
+
+            <article class="benefit-card reveal">
+
+                <span class="benefit-number">
+                    03
+                </span>
+
+                <div class="benefit-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Made for small rooms
+                </h3>
+
+                <p>
+                    Setiap sudut dipikirkan untuk fungsi nyata:
+                    tidur, belajar, menyimpan barang, sampai
+                    menciptakan ruang yang terasa lebih lega.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     TRANSFORMATION
+====================================================== -->
+
+<section
+    class="transformation"
+    id="transform"
+>
+
+    <div class="container transformation-grid">
+
+        <div class="transformation-copy">
+
+            <span class="section-tag orange">
+                Room makeover
+            </span>
+
+            <div class="section-heading">
+
+                <h2>
+                    Ruang yang sama.
+                    <span class="accent">
+                        Feel yang berbeda.
+                    </span>
+                </h2>
+
+            </div>
+
+            <p>
+                Tidak perlu membongkar kamar untuk membuatnya
+                terasa lebih nyaman. KOZY bekerja dari kondisi
+                ruangan yang kamu punya sekarang dan mencari
+                perubahan yang paling berdampak.
+            </p>
+
+
+            <div class="transformation-checks">
+
+                <div class="check">
+                    <span class="check-icon">✓</span>
+                    Optimalisasi layout kamar
+                </div>
+
+                <div class="check">
+                    <span class="check-icon">✓</span>
+                    Rekomendasi furnitur yang sesuai
+                </div>
+
+                <div class="check">
+                    <span class="check-icon">✓</span>
+                    Mood dan warna ruang yang lebih nyaman
+                </div>
+
+                <div class="check">
+                    <span class="check-icon">✓</span>
+                    Shopping list sesuai kebutuhan
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="compare reveal">
+
+            <img
+                src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=85&w=1400&auto=format&fit=crop"
+                alt="Before"
+            >
+
+
+            <div
+                class="compare-after"
+                id="compareAfter"
+            >
+
+                <img
+                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=85&w=1400&auto=format&fit=crop"
+                    alt="After"
+                >
+
+            </div>
+
+
+            <span class="compare-label before">
+                Before
+            </span>
+
+            <span class="compare-label after">
+                After
+            </span>
+
+
+            <div
+                class="compare-divider"
+                id="compareDivider"
+            >
+
+                <div class="compare-handle">
+                    ↔
+                </div>
+
+            </div>
+
+
+            <input
+                type="range"
+                id="compareRange"
+                min="0"
+                max="100"
+                value="50"
+                aria-label="Before after slider"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     PROCESS
+====================================================== -->
+
+<section class="section process" id="process">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="section-tag">
+                Cara kerja
+            </span>
+
+            <h2>
+                From your room
+                to your <span class="accent">dream room.</span>
+            </h2>
+
+            <p>
+                Proses dibuat sederhana supaya semuanya
+                bisa dilakukan dari kamar kosmu.
+            </p>
+
+        </div>
+
+
+        <div class="process-list">
+
+            <div class="process-row reveal">
+
+                <div class="process-number">
+                    01
+                </div>
+
+                <h3>
+                    Kirim kondisi kamar
+                </h3>
+
+                <p>
+                    Kirim foto kamar, ukuran ruang, posisi pintu
+                    dan jendela, serta kebutuhan utama yang ingin
+                    kamu perbaiki.
+                </p>
+
+            </div>
+
+
+            <div class="process-row reveal">
+
+                <div class="process-number">
+                    02
+                </div>
+
+                <h3>
+                    Kami analisis ruangmu
+                </h3>
+
+                <p>
+                    Tim KOZY melihat pain point kamar:
+                    layout, fungsi ruang, penyimpanan,
+                    kenyamanan belajar, dan kebutuhan personal.
+                </p>
+
+            </div>
+
+
+            <div class="process-row reveal">
+
+                <div class="process-number">
+                    03
+                </div>
+
+                <h3>
+                    Dapatkan rekomendasi desain
+                </h3>
+
+                <p>
+                    Kamu menerima hasil sesuai paket,
+                    mulai dari layout hingga moodboard,
+                    perspektif 3D, dan alternatif desain.
+                </p>
+
+            </div>
+
+
+            <div class="process-row reveal">
+
+                <div class="process-number">
+                    04
+                </div>
+
+                <h3>
+                    Terapkan sesuai budget
+                </h3>
+
+                <p>
+                    Gunakan rekomendasi dan shopping list
+                    untuk menerapkan makeover secara bertahap
+                    sesuai budget yang tersedia.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     PACKAGES
+====================================================== -->
+
+<section class="section packages" id="packages">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="section-tag orange">
+                Paket desain
+            </span>
+
+            <h2>
+                Pilih level makeover
+                yang kamu butuhkan.
+            </h2>
+
+            <p>
+                Mulai dari sekadar memperbaiki layout
+                sampai desain kamar yang lebih lengkap.
+            </p>
+
+        </div>
+
+
+        <div class="package-grid">
+
+            <article class="package-card reveal">
+
+                <div class="package-label">
+                    Basic
+                </div>
+
+                <h3>
+                    Layout Kos
+                </h3>
+
+                <div class="package-price">
+                    Rp25–50
+                    <small>ribu</small>
+                </div>
+
+                <div class="package-divider"></div>
+
+                <ul>
+                    <li>Denah layout</li>
+                    <li>Saran penataan</li>
+                    <li>Rekomendasi furnitur</li>
+                    <li>1x revisi</li>
+                </ul>
+
+                <button
+                    class="choose-package"
+                    data-package="Basic Layout Kos"
+                >
+                    Pilih Basic
+                </button>
+
+            </article>
+
+
+            <article class="package-card featured reveal">
+
+                <span class="popular-badge">
+                    Most Popular
+                </span>
+
+                <div class="package-label">
+                    Comfort
+                </div>
+
+                <h3>
+                    Kos Makeover
+                </h3>
+
+                <div class="package-price">
+                    Rp75–150
+                    <small>ribu</small>
+                </div>
+
+                <div class="package-divider"></div>
+
+                <ul>
+                    <li>Denah + moodboard</li>
+                    <li>3D perspektif</li>
+                    <li>Shopping list</li>
+                    <li>2x revisi</li>
+                </ul>
+
+                <button
+                    class="choose-package"
+                    data-package="Comfort Kos Makeover"
+                >
+                    Pilih Comfort
+                </button>
+
+            </article>
+
+
+            <article class="package-card reveal">
+
+                <div class="package-label">
+                    Complete
+                </div>
+
+                <h3>
+                    My Dream Kos
+                </h3>
+
+                <div class="package-price">
+                    Rp150–250
+                    <small>ribu</small>
+                </div>
+
+                <div class="package-divider"></div>
+
+                <ul>
+                    <li>Semua fitur Comfort</li>
+                    <li>Konsultasi mendalam</li>
+                    <li>Alternatif desain</li>
+                    <li>3x revisi</li>
+                </ul>
+
+                <button
+                    class="choose-package"
+                    data-package="Complete My Dream Kos"
+                >
+                    Pilih Complete
+                </button>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     GALLERY
+====================================================== -->
+
+<section class="section" id="gallery">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+                Room inspiration
+            </span>
+
+            <h2>
+                Kecil bukan berarti
+                <span class="accent">membosankan.</span>
+            </h2>
+
+            <p>
+                Referensi suasana kamar kos yang mengutamakan
+                kenyamanan, fungsi, dan karakter personal.
+            </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=85&w=1200&auto=format&fit=crop"
+                    alt="Warm study room"
+                >
+
+                <div class="gallery-overlay">
+                    <strong>Warm Study Corner</strong>
+                    <span>Comfortable • Productive</span>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1617098900591-3f90928e8c54?q=85&w=1000&auto=format&fit=crop"
+                    alt="Minimal room"
+                >
+
+                <div class="gallery-overlay">
+                    <strong>Soft Minimal</strong>
+                    <span>Simple • Calm</span>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1615874694520-474822394e73?q=85&w=1000&auto=format&fit=crop"
+                    alt="Cozy bedroom"
+                >
+
+                <div class="gallery-overlay">
+                    <strong>Cozy Neutral</strong>
+                    <span>Warm • Personal</span>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=85&w=1300&auto=format&fit=crop"
+                    alt="Room design"
+                >
+
+                <div class="gallery-overlay">
+                    <strong>Smart Small Space</strong>
+                    <span>Functional • Clean</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     FAQ
+====================================================== -->
+
+<section class="section faq" id="faq">
+
+    <div class="container faq-layout">
+
+        <div class="section-heading">
+
+            <span class="section-tag orange">
+                FAQ
+            </span>
+
+            <h2>
+                Masih ada
+                <span class="accent">pertanyaan?</span>
+            </h2>
+
+            <p>
+                Beberapa hal yang biasanya ingin diketahui
+                sebelum mulai desain kamar bersama KOZY.
+            </p>
+
+        </div>
+
+
+        <div class="faq-list">
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    Apakah harus renovasi kamar?
+                    <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Tidak. KOZY dirancang untuk kamar kos
+                        sehingga rekomendasi mengutamakan perubahan
+                        yang tidak membutuhkan renovasi permanen.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    Apakah semuanya bisa dilakukan online?
+                    <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Ya. Kamu dapat mengirim foto, ukuran,
+                        dan informasi kamar secara online.
+                        Proses desain juga dapat dilakukan tanpa
+                        pertemuan langsung.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    Apa perbedaan Basic dan Comfort?
+                    <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Basic fokus pada layout dan penataan.
+                        Comfort memberikan hasil yang lebih visual
+                        melalui moodboard, perspektif 3D,
+                        serta shopping list.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    Apakah rekomendasi menyesuaikan budget?
+                    <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Ya. Salah satu fokus KOZY adalah memberikan
+                        rekomendasi yang realistis untuk mahasiswa,
+                        termasuk dalam pemilihan furnitur dan elemen
+                        yang akan digunakan.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    Berapa lama pengerjaan desain?
+                    <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Estimasi awal pengerjaan adalah sekitar
+                        1–3 hari per order, tergantung kebutuhan
+                        dan paket layanan.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     CTA
+====================================================== -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <div class="cta-box reveal">
+
+            <h2>
+                Your room deserves
+                to feel like home.
+            </h2>
+
+            <p>
+                Tidak perlu menunggu punya kamar besar.
+                Mulai dari ruang yang kamu punya sekarang
+                dan buat setiap sudutnya bekerja lebih baik.
+            </p>
+
+            <div class="cta-actions">
+
+                <button
+                    class="cta-primary open-consultation"
+                >
+                    Konsultasikan kamarmu →
+                </button>
+
+                <a
+                    href="#packages"
+                    class="cta-secondary"
+                >
+                    Lihat harga
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-top">
+
+            <div>
+
+                <a href="#home" class="logo footer-logo">
+                    K<span class="logo-o">O</span>ZY
+                </a>
+
+                <p class="footer-description">
+                    Affordable kos room design untuk mahasiswa
+                    yang ingin kamar lebih nyaman, fungsional,
+                    dan terasa lebih personal.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-title">
+                    Explore
+                </div>
+
+                <div class="footer-links">
+                    <a href="#about">Tentang</a>
+                    <a href="#transform">Makeover</a>
+                    <a href="#process">Cara Kerja</a>
+                    <a href="#packages">Paket</a>
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-title">
+                    Contact
+                </div>
+
+                <div class="footer-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">TikTok</a>
+                    <a href="#">WhatsApp</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 KOZY
+            </span>
+
+            <span>
+                Small room. Better living.
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ======================================================
+     CONSULTATION MODAL
+====================================================== -->
+
+<div
+    class="modal"
+    id="consultationModal"
+>
+
+    <div class="modal-card">
+
+        <button
+            class="modal-close"
+            id="modalClose"
+        >
+            ×
+        </button>
+
+        <h3>
+            Ceritakan kamarmu.
+        </h3>
+
+        <p>
+            Isi informasi singkat berikut.
+            Pesan akan diarahkan ke WhatsApp KOZY.
+        </p>
+
+
+        <form class="form" id="consultationForm">
+
+            <div class="form-group">
+
+                <label for="customerName">
+                    Nama
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Nama kamu"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="customerPackage">
+                    Paket
+                </label>
+
+                <select id="customerPackage">
+
+                    <option value="">
+                        Belum menentukan
+                    </option>
+
+                    <option value="Basic Layout Kos">
+                        Basic — Layout Kos
+                    </option>
+
+                    <option value="Comfort Kos Makeover">
+                        Comfort — Kos Makeover
+                    </option>
+
+                    <option value="Complete My Dream Kos">
+                        Complete — My Dream Kos
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="roomSize">
+                    Ukuran kamar
+                </label>
+
+                <input
+                    type="text"
+                    id="roomSize"
+                    placeholder="Contoh: 3 x 3 meter"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="budget">
+                    Budget makeover
+                </label>
+
+                <input
+                    type="text"
+                    id="budget"
+                    placeholder="Contoh: Rp500.000"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="roomProblem">
+                    Apa yang ingin diperbaiki?
+                </label>
+
+                <textarea
+                    id="roomProblem"
+                    rows="4"
+                    placeholder="Contoh: meja belajar sempit, kamar terasa penuh, butuh storage tambahan..."
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="form-submit"
+            >
+                Lanjut ke WhatsApp →
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+const navbar =
+    document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+    navbar.classList.toggle(
+        "scrolled",
+        window.scrollY > 30
+    );
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+const closeMenu =
+    document.getElementById("closeMenu");
+
+
+menuButton.addEventListener("click", () => {
+
+    mobileMenu.classList.add("active");
+
+    document.body.classList.add("no-scroll");
+
+});
+
+
+closeMenu.addEventListener("click", closeMobileMenu);
+
+
+document
+    .querySelectorAll(".mobile-menu a")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+    });
+
+
+function closeMobileMenu() {
+
+    mobileMenu.classList.remove("active");
+
+    document.body.classList.remove("no-scroll");
+
+}
+
+
+/* =========================================================
+   BEFORE AFTER
+========================================================= */
+
+const compareRange =
+    document.getElementById("compareRange");
+
+const compareAfter =
+    document.getElementById("compareAfter");
+
+const compareDivider =
+    document.getElementById("compareDivider");
+
+
+compareRange.addEventListener(
+    "input",
+    event => {
+
+        const value =
+            event.target.value;
+
+        compareAfter.style.width =
+            value + "%";
+
+        compareDivider.style.left =
+            value + "%";
+
+    }
+);
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+const faqItems =
+    document.querySelectorAll(".faq-item");
+
+
+faqItems.forEach(item => {
+
+    const question =
+        item.querySelector(".faq-question");
+
+    const answer =
+        item.querySelector(".faq-answer");
+
+
+    question.addEventListener(
+        "click",
+        () => {
+
+            const isActive =
+                item.classList.contains("active");
+
+
+            faqItems.forEach(other => {
+
+                other.classList.remove("active");
+
+                other
+                    .querySelector(".faq-answer")
+                    .style.maxHeight = null;
+
+            });
+
+
+            if (!isActive) {
+
+                item.classList.add("active");
+
+                answer.style.maxHeight =
+                    answer.scrollHeight + "px";
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   CONSULTATION MODAL
+========================================================= */
+
+const modal =
+    document.getElementById(
+        "consultationModal"
+    );
+
+const modalClose =
+    document.getElementById(
+        "modalClose"
+    );
+
+const openConsultationButtons =
+    document.querySelectorAll(
+        ".open-consultation"
+    );
+
+const choosePackageButtons =
+    document.querySelectorAll(
+        ".choose-package"
+    );
+
+const packageSelect =
+    document.getElementById(
+        "customerPackage"
+    );
+
+
+openConsultationButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            openModal
+        );
+
+    }
+);
+
+
+choosePackageButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                packageSelect.value =
+                    button.dataset.package;
+
+                openModal();
+
+            }
+        );
+
+    }
+);
+
+
+modalClose.addEventListener(
+    "click",
+    closeModal
+);
+
+
+modal.addEventListener(
+    "click",
+    event => {
+
+        if (event.target === modal) {
+            closeModal();
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            modal.classList.contains("active")
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+function openModal() {
+
+    modal.classList.add("active");
+
+    document.body.classList.add(
+        "no-scroll"
+    );
+
+}
+
+
+function closeModal() {
+
+    modal.classList.remove("active");
+
+    document.body.classList.remove(
+        "no-scroll"
+    );
+
+}
+
+
+/* =========================================================
+   WHATSAPP FORM
+========================================================= */
+
+const consultationForm =
+    document.getElementById(
+        "consultationForm"
+    );
+
+
+consultationForm.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+                .getElementById("customerName")
+                .value;
+
+        const packageName =
+            document
+                .getElementById("customerPackage")
+                .value;
+
+        const roomSize =
+            document
+                .getElementById("roomSize")
+                .value;
+
+        const budget =
+            document
+                .getElementById("budget")
+                .value;
+
+        const problem =
+            document
+                .getElementById("roomProblem")
+                .value;
+
+
+        /*
+        =====================================================
+        GANTI NOMOR DI BAWAH
+        DENGAN NOMOR WHATSAPP KOZY
+
+        Format:
+        628xxxxxxxxxx
+        =====================================================
+        */
+
+        const whatsappNumber =
+            "6281234567890";
+
+
+        const message =
+`Halo KOZY 👋
+
+Saya tertarik konsultasi desain kamar kos.
+
+Nama: ${name}
+Paket: ${packageName || "Belum menentukan"}
+Ukuran kamar: ${roomSize || "-"}
+Budget makeover: ${budget || "-"}
+
+Hal yang ingin saya perbaiki:
+${problem || "-"}
+
+Saya ingin mengetahui rekomendasi selanjutnya.`;
+
+
+        const url =
+            "https://wa.me/" +
+            whatsappNumber +
+            "?text=" +
+            encodeURIComponent(message);
+
+
+        window.open(
+            url,
+            "_blank"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   REVEAL ON SCROLL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+</script>
+
+</body>
+</html>
